@@ -60,7 +60,7 @@ const adminRegister = async (req, res) => {
         const admin = new Admin({
             ...req.body
         });
-
+        console.log("Function called :::::",req.body)
         const existingAdminByEmail = await Admin.findOne({ email: req.body.email });
         const existingSchool = await Admin.findOne({ schoolName: req.body.schoolName });
 
@@ -76,6 +76,7 @@ const adminRegister = async (req, res) => {
             res.send(result);
         }
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 };
